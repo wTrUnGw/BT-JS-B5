@@ -13,16 +13,107 @@
 </head>
 
 <body>
-    <div class="form-group">
-        <h1>TÍNH TIỀN LƯƠNG NHÂN VIÊN</h1>
-        <label for=""> Lương nhân viên 1 ngày </label>
-        <input type="text" class="form-control" name="" id="luong" aria-describedby="helpId" placeholder="">
-    </div>
-    <div class="form-group">
-        <label for="">Số ngày làm</label>
-        <input type="text" class="form-control" name="" id="soNgayLam" aria-describedby="helpId" placeholder="">
-        <button class="btn btn-success m-lg-2" id="btLuong">Tổng tiền</button>
-        <p class="bg-success text-white p-3 mt-3" id="result1"></p>
+    <div class="container">
+        <div class="TASK1 pt-4">
+            <h1>QUẢN LÝ TUYỂN SINH</h1>
+            <label for=""> Điểm chuẩn </label>
+            <input type="text" class="form-control" name="" id="mark" aria-describedby="helpId" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">CHỌN KHU VỰC</label>
+            <input type="text" class="form-control" name="" id="area" aria-describedby="helpId" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">CHỌN ĐỐI TƯỢNG</label>
+            <input type="text" class="form-control" name="" id="priority" aria-describedby="helpId" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <label for=""> Điểm môn thứ 1 </label>
+            <input type="text" class="form-control" name="" id="mark1" aria-describedby="helpId" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <label for=""> Điểm môn thứ 2 </label>
+            <input type="text" class="form-control" name="" id="mark2" aria-describedby="helpId" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <label for=""> Điểm môn thứ 3 </label>
+            <input type="text" class="form-control" name="" id="mark3" aria-describedby="helpId" placeholder="">
+            <button class="btn btn-success m-lg-2" id="btmark" onclick="diemTong()">Tổng tiền</button>
+            <p class="bg-success text-white p-3 mt-3" id="result1"></p>
+        </div>
+
+
+        <!-- TÍNH TIỀN ĐIỆN -->
+        <div class="TASK2">
+            <h1>TÍNH TIỀN ĐIỆN</h1>
+            <label for=""> Nhập họ và tên </label>
+            <input type="text" class="form-control" name="" id="fullName" aria-describedby="helpId" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <label for=""> Nhập số Kw </label>
+            <input type="text" class="form-control" name="" id="kw" aria-describedby="helpId" placeholder="">
+            <button class="btn btn-success m-lg-2" id="btelectric" onclick="elecBill()">Tổng tiền</button>
+            <p class="bg-success text-white p-3 mt-3" id="result2"></p>
+        </div>
+
+
+
+
+        <!-- TÍNH THUẾ THUẾ THUA NHẬP CÁ NHÂN -->
+        <div class="TASK3">
+            <h1>TÍNH TIỀN ĐIỆN</h1>
+            <label for=""> Nhập họ và tên </label>
+            <input type="text" class="form-control" name="" id="fName" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for=""> Tổng thu nhập năm </label>
+            <input type="text" class="form-control" name="" id="sumOfMonth" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for=""> Số người phụ thuộc </label>
+            <input type="text" class="form-control" name="" id="dependent" aria-describedby="helpId" placeholder="">
+            <button class="btn btn-success m-lg-2" id="btTax" onclick="taxP()">Tổng tiền thuế</button>
+            <p class="bg-success text-white p-3 mt-3" id="result3"></p>
+        </div>
+
+
+        <!--  TÍNH TIỀN CÁP -->
+        <div class="TASK4">
+            <h1>TÍNH TIỀN CÁP</h1>
+            <div class="d-flex">
+                <form>
+                    <input onclick="hideConnect()" type="radio" id="ND" name="hehe" value="ND">
+                    <label for="ND">Nhà Dân</label><br>
+                    <input onclick="showConnect()" name="hehe" type="radio" id="DN" value="DN">
+                    <label for="DN">Doanh Nghiệp</label><br>
+                </form>
+                <div class="mb-3 mx-5">
+                    <label class="form-label"> Nhập Mã Khách Hàng </label>
+                    <input class="form-control w-50" id="cusID" />
+                </div>
+                <div class="mb-3 mx-5">
+                    <label class="form-label"> Nhập Số Kênh Cao Cấp </label>
+                    <input type="number" min="0" class="form-control w-50" id="channel" />
+                </div>
+                <div class="mb-3 mx-5 d-none" id="soKetNoi">
+                    <label class="form-label "> Nhập Số Kết Nối </label>
+                    <input type="number" min="0" class="form-control w-50" id="connects" />
+                </div>
+
+            </div>
+            <button class="btn btn-success m-lg-2" id="btcable" onclick="mCable()">Tính Tiền CÁP</button>
+            <p class="bg-success text-white p-3 mt-3" id="result4"></p>
+
+
+        </div>
+
+
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
