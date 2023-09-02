@@ -4,7 +4,19 @@ function diemTong() {
   var mark2 = document.getElementById("mark2").value * 1;
   var mark3 = document.getElementById("mark3").value * 1;
   var mark = document.getElementById("mark").value * 1;
+  // if (!isNaN(mark)) {
+  //   alert("VUI LÒNG NHẬP ĐIỂM CHUẨN");
+  //   document.getElementById("mark").value * 1;
+  //   return;
+  // }
 
+  if (mark1 < 0 || mark1 > 10) {
+    alert("vui lòng nhập lại");
+  } else if (mark2 < 0 || mark2 > 10) {
+    alert("vui lòng nhập lại ");
+  } else if (mark3 < 0 || mark3 > 10) {
+    alert("vui lòng nhập lại");
+  }
   //chọn khu vực
   var area = document.getElementById("area").value;
 
@@ -19,6 +31,8 @@ function diemTong() {
   } else if (area === "C") {
     sumOfScoree += 0.5;
     console.log(sumOfScoree);
+  } else {
+    alert("vui lòng nhập lại khu vực X, A, B, C");
   }
 
   // chọn đối tượng
@@ -35,11 +49,16 @@ function diemTong() {
   } else if (priority === 3) {
     sumOfScoree += 1;
     console.log(sumOfScoree);
+  } else {
+    alert("vui lòng nhập lại điểm ưu tiên trong khoảng 0 1 2 3");
   }
+
   var tong = mark1 + mark2 + mark3 + sumOfScoree;
   content = "Tổng: " + tong;
 
-  if (mark <= tong) {
+  if (mark1 === 0 || mark2 === 0 || mark3 === 0) {
+    content += " " + "Bạn đã gãy do có điểm zero";
+  } else if (mark <= tong) {
     // console.log("Đậu");
     content += " " + "Bạn đã đậu";
   } else {
@@ -50,7 +69,7 @@ function diemTong() {
   document.getElementById("result1").innerText = content;
 }
 
-// ---------------------------------------------------------------//
+// ------------------------------- Bài 2 -------------------------------//
 // xài 50kw đầu = 500, 50kw kế = 650, 100kw kế = 850, 150kw kế =1100 còn lại 1300
 const soKw1 = 500;
 const sokw2 = 650;
@@ -85,8 +104,13 @@ function tinhkw5(kw, soTienKw5) {
 
 function elecBill() {
   var fullName = document.getElementById("fullName").value;
-  console.log(fullName);
   var kw = document.getElementById("kw").value * 1;
+
+  if (!isNaN(fullName)) {
+    alert("VUI LÒNG NHẬP TÊN KHÁCH HÀNG");
+    document.getElementById("fullName").value = "";
+    return;
+  }
 
   if (kw > 0 && kw <= 50) {
     //kw1
@@ -125,7 +149,7 @@ function elecBill() {
     "Họ tên: " + fullName + " ; " + " " + "Tiền điện: " + tong.toLocaleString();
 }
 
-// ---------------------------------------------------------------//
+// ------------------------------- Bài 3 -------------------------------//
 // n  <= 60: 5% , 60<n<=120: 10%, 120<n<=210: 15%, 210<n<=384: 20%, 384<n<=624: 25%, 624<n<=960: 30%, n>960: 35%
 
 var moneyTax1 = 0;
@@ -159,41 +183,50 @@ function caseTax7(salary, peoleDependent) {
 }
 
 function taxP() {
-  var fName = document.getElementById("fName").value;
+  var employeeName = document.getElementById("employeeName").value;
   var sumOfMonth = document.getElementById("sumOfMonth").value * 1;
   var dependent = document.getElementById("dependent").value * 1;
 
-  if (!isNaN(fName)) {
+  if (!isNaN(employeeName)) {
     alert("VUI LÒNG NHẬP TÊN KHÁCH HÀNG");
-    document.getElementById("input-employeeName").value = "";
+    document.getElementById("employeeName").value = "";
     return;
   }
-  if (sumOfMonth >= 0 && sumOfMonth <= 6e7) {
+  if (sumOfMonth >= 0 || sumOfMonth <= 6e7) {
     moneyTax1 = caseTax1(sumOfMonth, dependent);
     sumTax = moneyTax1;
-  } else if (sumOfMonth > 6e7 && sumOfMonth <= 12e7) {
+  } else if (sumOfMonth > 6e7 || sumOfMonth <= 12e7) {
     moneyTax2 = caseTax2(sumOfMonth, dependent);
     sumTax = moneyTax2;
-  } else if (sumOfMonth > 12e7 && sumOfMonth <= 21e7) {
-    moneyTax2 = caseTax3(sumOfMonth, dependent);
+  } else if (sumOfMonth > 12e7 || sumOfMonth <= 21e7) {
+    moneyTax3 = caseTax3(sumOfMonth, dependent);
     sumTax = moneyTax3;
-  } else if (sumOfMonth > 21e7 && sumOfMonth <= 384e6) {
-    moneyTax2 = caseTax4(sumOfMonth, dependent);
+  } else if (sumOfMonth > 21e7 || sumOfMonth <= 384e6) {
+    moneyTax4 = caseTax4(sumOfMonth, dependent);
     sumTax = moneyTax4;
-  } else if (sumOfMonth > 384e6 && sumOfMonth <= 624e6) {
-    moneyTax2 = caseTax5(sumOfMonth, dependent);
+  } else if (sumOfMonth > 384e6 || sumOfMonth <= 624e6) {
+    moneyTax5 = caseTax5(sumOfMonth, dependent);
     sumTax = moneyTax5;
-  } else if (sumOfMonth > 624e6 && sumOfMonth <= 960e6) {
-    moneyTax2 = caseTax6(sumOfMonth, dependent);
+  } else if (sumOfMonth > 624e6 || sumOfMonth <= 960e6) {
+    moneyTax6 = caseTax6(sumOfMonth, dependent);
     sumTax = moneyTax6;
   } else if (sumOfMonth > 960e6) {
-    moneyTax2 = caseTax7(sumOfMonth, dependent);
+    moneyTax7 = caseTax7(sumOfMonth, dependent);
     sumTax = moneyTax7;
   }
 
-  document.getElementById("result3").innerText = sumTax;
+  document.getElementById("result3").innerText =
+    "Họ tên: " +
+    employeeName +
+    " ; " +
+    "Tiền thuế:" +
+    " " +
+    sumTax.toLocaleString() +
+    " " +
+    "VND";
 }
-// Bài 4
+
+// ------------------------------- Bài 4 -------------------------------//
 let DoanhNghiep = document.getElementById("DN");
 let NhaDan = document.getElementById("ND");
 
